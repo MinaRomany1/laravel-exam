@@ -24,7 +24,7 @@ class CategoryResource extends Resource
 
     protected static ?string $recordTitleAttribute = 'name';
 
-    protected static UnitEnum|string|null $navigationGroup = 'Exam Management';
+    protected static UnitEnum|string|null $navigationGroup = 'Categories Management';
 
     public static function form(Schema $schema): Schema
     {

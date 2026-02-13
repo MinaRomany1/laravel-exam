@@ -27,6 +27,7 @@ class CategoryForm
                     TextInput::make('slug')
                         ->required()
                         ->disabled(fn(callable $get) => $get('auto_slug'))
+                        ->dehydrated(true)
                         ->unique(ignoreRecord: true),
                 ]),
                 Section::make([

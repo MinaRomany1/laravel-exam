@@ -28,9 +28,15 @@ class Exam extends Model
     {
         return $this->belongsTo(Category::class);
     }
-    public function questions()
+        public function questions()
     {
-        return $this->hasMany(Question::class);
+        return $this->belongsToMany(Question::class)
+            ->withPivot('order_index')
+            ->orderBy('exam_question.order_index');
+    }
+    public function examQuestions()
+    {
+        return $this->hasMany(ExamQuestion::class);
     }
 }
 

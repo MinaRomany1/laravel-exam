@@ -12,17 +12,26 @@ class Question extends Model
 
     protected $fillable = [
         'question_text',
-        'exam_id',
         'question_type',
         'image_url'
     ];
 
-    public function exam()
+    public function exams()
     {
-        return $this->belongsTo(Exam::class);
+        return $this->belongsToMany(Exam::class)
+            ->withPivot('order_index');
     }
     public function answers()
     {
         return $this->hasMany(Answer::class);
+    }
+    public function correctAnswer()
+    {
+        return $this->hasOne(Answer::class)->where('is_correct', true);
+    }
+    public function examQuestions()
+    {
+        return $this->hasMany(ExamQuestion::class)
+            ->orderBy('order_index');
     }
 }
