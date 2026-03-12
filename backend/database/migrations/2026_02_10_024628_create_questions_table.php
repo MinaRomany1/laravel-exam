@@ -13,6 +13,7 @@ return new class extends Migration {
         Schema::create('questions', function (Blueprint $table) {
             $table->id();
             $table->string('question_text');
+            $table->foreignId('user_id')->constrained('users')->cascadeOnDelete();
             $table->integer('mark')->default(1);
             $table->enum('question_type', ['multiple_choice', 'true_false', 'text']);
             $table->string('image_url')->nullable();

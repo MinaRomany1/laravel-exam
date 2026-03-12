@@ -13,14 +13,15 @@ return new class extends Migration {
         Schema::create('exams', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->foreignId('user_id')->constrained('users')->cascadeOnDelete();
             $table->integer('duration_minutes')->nullable();
             $table->string('description')->nullable();
             $table->foreignId('category_id')->nullable()->constrained('categories')->nullOnDelete();
             $table->timestamp('start_time')->nullable();
+            $table->integer('pass_percentage')->nullable();
             $table->timestamp('end_time')->nullable();
             $table->boolean('multiple_attempts')->default(true);
             $table->boolean('shuffle_questions')->default(false);
-            $table->boolean('shuffle_answers')->default(false);
             $table->boolean('show_results')->default(true);
             $table->boolean('show_detailed_result')->default(true);
             $table->boolean('enable_image_answers')->default(false);

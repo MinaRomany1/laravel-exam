@@ -6,6 +6,7 @@ use App\Filament\Resources\Exams\ExamResource;
 use Filament\Actions\DeleteAction;
 use Filament\Actions\ViewAction;
 use Filament\Resources\Pages\EditRecord;
+use Illuminate\Support\Facades\Auth;
 
 class EditExam extends EditRecord
 {
@@ -17,5 +18,12 @@ class EditExam extends EditRecord
             ViewAction::make(),
             DeleteAction::make(),
         ];
+    }
+
+
+    protected function mutateFormDataBeforeSave(array $data): array
+    {
+        $data['user_id'] = Auth::id();
+        return $data;
     }
 }

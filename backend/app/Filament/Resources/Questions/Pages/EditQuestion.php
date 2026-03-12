@@ -6,6 +6,7 @@ use App\Filament\Resources\Questions\QuestionResource;
 use Filament\Actions\DeleteAction;
 use Filament\Actions\ViewAction;
 use Filament\Resources\Pages\EditRecord;
+use Illuminate\Support\Facades\Auth;
 
 class EditQuestion extends EditRecord
 {
@@ -17,5 +18,10 @@ class EditQuestion extends EditRecord
             ViewAction::make(),
             DeleteAction::make(),
         ];
+    }
+     protected function mutateFormDataBeforeSave(array $data): array
+    {
+        $data['user_id'] = Auth::id();
+        return $data;
     }
 }

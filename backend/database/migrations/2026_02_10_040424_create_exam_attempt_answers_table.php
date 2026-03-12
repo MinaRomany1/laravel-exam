@@ -16,8 +16,10 @@ return new class extends Migration
             $table->foreignId('exam_attempt_id')->constrained()->cascadeOnDelete(); // Attempt it belongs to
             $table->foreignId('question_id')->constrained()->cascadeOnDelete();     // Question answered
             $table->foreignId('answer_id')->nullable()->constrained('answers')->nullOnDelete(); // Chosen answer (MCQ)
+            $table->integer('order_index')->default(0);
             $table->text('text_answer')->nullable(); // For text questions
             $table->boolean('is_correct')->nullable(); // Calculated after submission
+            $table->integer('awarded_mark')->nullable();
             $table->timestamps();
             $table->unique(['exam_attempt_id', 'question_id']);
         });

@@ -12,8 +12,10 @@ return new class extends Migration {
     {
         Schema::create('exam_attempts', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('exam_id')->constrained()->cascadeOnDelete();
             $table->foreignId('exam_session_id')->constrained()->cascadeOnDelete(); // Links to session
             $table->integer('score')->nullable();
+            $table->boolean('passed')->default(false);
             $table->timestamp('started_at')->nullable();
             $table->timestamp('finished_at')->nullable();
             $table->boolean('submitted')->default(false);

@@ -16,6 +16,7 @@ return new class extends Migration {
             $table->foreignId('question_id')->constrained()->cascadeOnDelete();
             $table->integer('order_index')->default(0); // order of question in this exam
             $table->timestamps();
+            $table->unique(['exam_id', 'question_id']);
         });
     }
 

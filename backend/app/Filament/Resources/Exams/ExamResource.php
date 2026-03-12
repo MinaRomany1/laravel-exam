@@ -42,6 +42,18 @@ class ExamResource extends Resource
         return ExamsTable::configure($table);
     }
 
+    // TODO 1. Exam Results / Analytics Page
+    // This is the most valuable thing for admins. A custom Filament page or relation manager showing:
+    // Total attempts per exam
+    // Average score
+    // Highest / lowest score
+    // Pass rate (if you have a pass mark threshold — you should add this to exams table)
+    // Time distribution (how long users took)
+
+    // 2. User Attempts View
+    // Inside each exam's detail page, a relation manager showing:
+    // User | Started At | Submitted At | Score | Passed? | Duration Taken
+    // Clicking a row opens the full attempt — which questions they got right/wrong and what they answered.
     public static function getRelations(): array
     {
         return [
