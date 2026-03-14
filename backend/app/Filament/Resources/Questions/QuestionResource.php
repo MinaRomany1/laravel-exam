@@ -16,6 +16,8 @@ use Filament\Schemas\Schema;
 use Filament\Support\Icons\Heroicon;
 use Filament\Tables\Table;
 use UnitEnum;
+use Illuminate\Database\Eloquent\Builder;
+
 class QuestionResource extends Resource
 {
     protected static ?string $model = Question::class;
@@ -56,5 +58,10 @@ class QuestionResource extends Resource
             'view' => ViewQuestion::route('/{record}'),
             'edit' => EditQuestion::route('/{record}/edit'),
         ];
+    }
+    public static function getEloquentQuery(): Builder
+    {
+        return parent::getEloquentQuery()
+            ->where('user_id', Auth::id());
     }
 }

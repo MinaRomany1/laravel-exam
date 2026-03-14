@@ -13,6 +13,7 @@ class Question extends Model
     protected $fillable = [
         'question_text',
         'question_type',
+        'user_id',
         'image_url'
     ];
 

@@ -14,6 +14,7 @@ return new class extends Migration {
             $table->id();
             $table->string('name');
             $table->foreignId('user_id')->constrained('users')->cascadeOnDelete();
+            $table->boolean('is_active')->default(true);
             $table->integer('duration_minutes')->nullable();
             $table->string('description')->nullable();
             $table->foreignId('category_id')->nullable()->constrained('categories')->nullOnDelete();

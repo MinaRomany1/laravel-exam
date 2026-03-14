@@ -17,6 +17,9 @@ use Filament\Schemas\Schema;
 use Filament\Support\Icons\Heroicon;
 use Filament\Tables\Table;
 use UnitEnum;
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Support\Facades\Auth;
+
 class ExamResource extends Resource
 {
     protected static ?string $model = Exam::class;
@@ -68,5 +71,10 @@ class ExamResource extends Resource
             'view' => ViewExam::route('/{record}'),
             'edit' => EditExam::route('/{record}/edit'),
         ];
+    }
+    public static function getEloquentQuery(): Builder
+    {
+        return parent::getEloquentQuery()
+            ->where('user_id', Auth::id());
     }
 }

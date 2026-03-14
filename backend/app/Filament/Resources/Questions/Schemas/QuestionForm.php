@@ -32,8 +32,8 @@ class QuestionForm
                 ->afterStateUpdated(function ($state, callable $set) {
                     if ($state === 'true_false') {
                         $set('answers', [
-                            ['answer_text' => 'True', 'is_correct' => false],
-                            ['answer_text' => 'False', 'is_correct' => false],
+                            ['answer_text' => 'True', 'is_correct' => 0],
+                            ['answer_text' => 'False', 'is_correct' => 0],
                         ]);
                     }
                 }),

@@ -41,9 +41,9 @@ class ExamForm
                     ->addActionLabel('Attach Question'),
                 Toggle::make('multiple_attempts')
                     ->required(),
-                Toggle::make('shuffle_questions')
+                Toggle::make('is_active')
                     ->required(),
-                Toggle::make('shuffle_answers')
+                Toggle::make('shuffle_questions')
                     ->required(),
                 Toggle::make('show_results')
                     ->required(),
